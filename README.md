@@ -1,2 +1,3 @@
-# racket-fluent
-Unix style pipes and lambda shorthand syntax for racket
+
+# ? Unpopular So LISP Is Why
+
