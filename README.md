@@ -66,9 +66,9 @@ example:
     2
     3
 
-## What's Wrong with Clojure's Threading Macro?
+## Comparison with Clojure's Threading Macro
 
-Clojure's threading macro is a prefix operator, which means it is less readable when nested and requires more parentheses. You could say that the infix *fluent* operator acts as one parenthesis. Compare:
+Clojure's threading macro is a prefix operator, which means it is less readable when nested and requires more parentheses. You could say that the *fluent* infix operator acts as one parenthesis. Compare:
 
 THREADING: 
 
@@ -105,5 +105,5 @@ This library will soon be available on the racket package server.
 
 ## Related Resources
 
- - For more solutions to your life's problems, [visit the author's website](https://rogerkeays.com)
+For more solutions to your life's problems, [visit the author's website](https://rogerkeays.com)
 
