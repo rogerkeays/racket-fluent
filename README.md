@@ -1,5 +1,5 @@
 
-# fluent: UNIX style pipes and lambda shorthand syntax for racket
+# UNIX style pipes and lambda shorthand syntax for racket
 
 ## ? Unpopular So LISP Is Why
 
@@ -66,7 +66,7 @@ example:
     2
     3
 
-## Comparison with Clojure's Threading Macro
+## Comparison to Clojure's Threading Macro
 
 Clojure's threading macro is a prefix operator, which means it is less readable when nested and requires more parentheses. You could say that the *fluent* infix operator acts as one parenthesis. Compare:
 
