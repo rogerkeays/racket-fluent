@@ -12,6 +12,7 @@
 
   ;; function composition
   ("FOO" → string-downcase → check-equal? "foo")
+  ("FOO" → string-ref (1 → subtract 1) → char-downcase → check-equal? #\f)
 
   ;; lambda shorthand syntax
   (((e : #f) 0) → check-equal? #f)
