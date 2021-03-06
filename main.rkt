@@ -1,9 +1,8 @@
 #lang racket/base
 
 (require (for-syntax racket/base) syntax/parse/define)
-(provide (rename-out [parse #%app])
-         gt? gte? lt? lte? add subtract multiply divide && ||
-         iterate)
+(provide (rename-out [parse #%app] [> gt?] [>= gte?] [< lt?] [<= lte?] [+ add] [- subtract] [* multiply] [/ divide])
+         && || iterate)
 
 (define-syntax-parser parse 
 
@@ -25,18 +24,6 @@
 
   ;; default parser
   [(_ rest ...) #'(#%app rest ...)])
-
-;; > breaks the greater-than procedure, so provide some alternatives
-(define (gt? a b) (> a b))
-(define (lt? a b) (< a b))
-(define (gte? a b) (>= a b))
-(define (lte? a b) (<= a b))
-
-;; these procedures read better as text using fluent function composition
-(define (add rest ...) (+ rest ...))
-(define (subtract rest ...) (- rest ...))
-(define (multiply rest ...) (* rest ...))
-(define (divide rest ...) (/ rest ...))
 
 ;; parse doesn't work with built-in racket macros and and or, so wrap them in a procedure
 (define (&& rest ...) (and rest ...))
