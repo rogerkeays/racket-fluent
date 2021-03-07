@@ -21,6 +21,7 @@
 
   ;; lambda shorthand syntax
   (((e : #f) 0) → check-equal? #f)
+  (((e : #t) 0) → check-equal? #t)
   (((x y : + x y) 1 2) → check-equal? 3)
 
   ;; combinations
@@ -29,6 +30,5 @@
   (((x y : x > add y) 1 2) > check-equal? 3)
   (((x y : x → add y) 1 2) → check-equal? 3)
   ((sort '(3 2 1) (a b : a → lt? b)) → check-equal? '(1 2 3))
-  ((sort '(1 2 3) (a b : a → gt? b)) → check-equal? '(3 2 1))
-)
+  ((sort '(1 2 3) (a b : a → gt? b)) → check-equal? '(3 2 1)))
 
