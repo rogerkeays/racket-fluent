@@ -72,14 +72,14 @@ example:
 
 Clojure's threading macro is a prefix operator, which means it is less readable when nested and requires more parentheses. You could say that the *fluent* infix operator acts as one parenthesis. Compare:
 
-THREADING: 
+PREFIX (clojure): 
 
     (-> (list (-> (-> id3 (hash-ref 'genre "unknown")) normalise-field)
               (-> (-> id3 (hash-ref 'track "0")) normalise-field)
               (-> (-> id3 (hash-ref 'artist "unknown")) normalise-field)
               (-> (-> id3 (hash-ref 'title "unknown")) normalise-field)) (string-join "."))
 
-FLUENT:
+INFIX (fluent):
 
     (list (id3 → hash-ref 'genre "unknown" → normalise-field)
           (id3 → hash-ref 'track "0" → normalise-field)
