@@ -103,7 +103,17 @@ Making this change permanent depends on your session manager. Search duckduckgo 
 
 ## Installation
 
-This library will soon be available on the racket package server.
+This library is available from the Racket package collection and can be installed with raco:
+
+    $ raco pkg install fluent
+
+All you need to do is `(require fluent)`. You can try it out in the REPL:
+
+    > (require fluent)
+    > ("FOO" > string-downcase)
+    "foo"
+    > ((x y : x > add y) 1 2)
+    3
 
 ## Related Resources
 
