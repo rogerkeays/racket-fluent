@@ -1,6 +1,6 @@
 #lang info
 
 (define collection "fluent")
-(define version "1.0")
+(define version "0.9")
 (define deps '("base", "rackunit"))
 
