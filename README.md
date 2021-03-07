@@ -1,5 +1,7 @@
 
-# UNIX style pipes and lambda shorthand syntax for racket
+# fluent
+
+UNIX style pipes and lambda shorthand syntax for Racket.
 
 ## ? Unpopular So LISP Is Why
 
