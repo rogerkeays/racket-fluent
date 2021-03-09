@@ -72,10 +72,11 @@ Clojure's threading macro is a prefix operator, which means it is less readable 
 
 CLOJURE (prefix): 
 
-    (-> (list (-> (-> id3 (hash-ref 'genre "unknown")) normalise-field)
-              (-> (-> id3 (hash-ref 'track "0")) normalise-field)
-              (-> (-> id3 (hash-ref 'artist "unknown")) normalise-field)
-              (-> (-> id3 (hash-ref 'title "unknown")) normalise-field)) (string-join "."))
+    (-> (list (-> id3 (hash-ref 'genre "unknown") normalise-field)
+              (-> id3 (hash-ref 'track "0") normalise-field)
+              (-> id3 (hash-ref 'artist "unknown") normalise-field)
+              (-> id3 (hash-ref 'title "unknown") normalise-field))
+        (string-join "."))
 
 FLUENT (infix):
 
