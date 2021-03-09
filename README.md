@@ -51,8 +51,6 @@ Since this library uses > for function composition, the built in greater-than pr
     * multiply
     / divide
 
-Check main.rkt for changes to this list.
-
 ## Convenience Procedures
 
 *fluent* works best when the data (input) parameter comes first. Most racket functions do this out of the box, but many functions which take a procedure as a parameter put the data last. That's fine, because you can just use >>. Alternatively you can wrap and rename the procedure, which is what we've done for these functions:
@@ -86,6 +84,8 @@ FLUENT (infix):
           (id3 → hash-ref 'artist "unknown" → normalise-field)
           (id3 → hash-ref 'title "unknown" → normalise-field)) → string-join ".")
  
+Fluent's infix approach also makes it easier to combine thread-first (→) with thread-last (→→).
+
 ## How to enter → with your keyboard
 
 → is Unicode character 2192. On linux you can enter this using `shift-ctrl-u 2192 enter`. Naturally, if you want to use this character, you should map it to some unused key on your keyboard. This can be done with xmodmap:
