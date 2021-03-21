@@ -64,9 +64,7 @@ If you don't like the default operators, you can rename then using (rename-in):
     # replace the mapping
     $ xmodmap -e "keycode 51=U2192 U21D2 ccedilla Ccedilla braceright breve braceright"
 
-This maps the cedilla key to →, and shift-cedilla to ⇒. You could use the menu key, window key, pause, insert, caps lock, or any othe useless key on your keyboard.
-
-Making this change permanent depends on your session manager. Search duckduckgo for details.
+This maps the cedilla key to →, and shift-cedilla to ⇒. You could use the menu key, window key, pause, insert, caps lock, or any othe useless key on your keyboard. Making this change permanent depends on your session manager. Search duckduckgo for details.
 
 ## Convenience Procedures
 
@@ -88,7 +86,7 @@ Compare:
 
 Of course, the choice is yours. Note, if you use *fluent/short* you will need to use `gt?` for the math procedure, as `>` is used for function composition.
 
-*fluent* also works best when the data (input) parameter comes first. Most racket functions do this out of the box, but many functions which take a procedure as a parameter put the data last. That's fine, because you can just use `~~>`. Alternatively you can wrap and rename the procedure, which is what we've done for these functions:
+*fluent* also works best with procedures which place the data (input) parameter first. Most racket functions do this out of the box, but many functions which take a procedure as a parameter put the data last. That's fine, because you can just use `~~>`. Alternatively you can wrap and rename the procedure, which is what we've done for these functions:
 
     original   data-first version
     -----------------------------
