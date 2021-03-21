@@ -20,7 +20,7 @@ If you don't like this syntax, *fluent* allows you to define your own operators 
 
 ## Function Composition
 
-Using the function composition operator (~>), *fluent* inserts the left hand side as the first parameter to the procedure on the right hand side. Use ~~> to add the left hand side as the last parameter to the procedure.
+Using the function composition operator, `~>`, *fluent* inserts the left hand side as the first parameter to the procedure on the right hand side. Use `~~>` to add the left hand side as the last parameter to the procedure.
 
     (data ~> procedure params)     becomes    (procedure data params)
     (data ~~> procedure params)    becomes    (procedure params data)
@@ -29,7 +29,7 @@ This operation can be chained or nested as demonstrated in the examples.
 
 ## Lambda Shorthand
 
-The : operator allows you to easily write a lambda function with one expression. Parameters go on the left, the expression on the right, no parentheses required. For example:
+The `:` operator allows you to easily write a lambda function with one expression. Parameters go on the left, the expression on the right, no parentheses required. For example:
 
     > ((x : + x 1) 1)
     2
@@ -53,7 +53,7 @@ If you don't like the default operators, you can rename then using (rename-in):
     (require fluent/unicode)
     ("hello world" → string-split ⇒ map string-upcase) ;; '("HELLO" "WORLD")
 
-→ is Unicode character 2192. On linux you can enter this using `shift-ctrl-u 2192 enter`. ⇒ is 21D2. Naturally, if you want to use these characters, you should map it to some unused key on your keyboard. This can be done with xmodmap:
+`→` is Unicode character 2192. On linux you can enter this using `shift-ctrl-u 2192 enter`. `⇒` is 21D2. Naturally, if you want to use these characters, you should map it to some unused key on your keyboard. This can be done with xmodmap:
 
     # use xev to get the keycode
     $ xev
@@ -64,7 +64,7 @@ If you don't like the default operators, you can rename then using (rename-in):
     # replace the mapping
     $ xmodmap -e "keycode 51=U2192 U21D2 ccedilla Ccedilla braceright breve braceright"
 
-This maps the cedilla key to →, and shift-cedilla to ⇒. You could use the menu key, window key, pause, insert, caps lock, or any othe useless key on your keyboard. Making this change permanent depends on your session manager. Search duckduckgo for details.
+This maps the cedilla key to `→`, and shift-cedilla to `⇒`. You could use the menu key, window key, pause, insert, caps lock, or any other useless key on your keyboard. Making this change permanent depends on your session manager. Search duckduckgo for details.
 
 ## Convenience Procedures
 
@@ -105,7 +105,9 @@ example:
 
     ("hello world" ~> string-upcase ~~> regexp-match? #px"LL" ~> eq? #t)
 
-Secondly, you don't need to put parentheses around procedures that take additional parameters. You can see this at work in the last two functions in the example above and in the example below. Finally, infix operators make nested code easier to follow. Compare:
+Secondly, you don't need to put parentheses around procedures that take additional parameters. You can see this at work in the last two functions in the example above and in the example below.
+
+Finally, infix operators make nested code easier to follow. Compare:
 
 CLOJURE (prefix): 
 
