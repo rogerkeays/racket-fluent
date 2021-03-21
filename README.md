@@ -43,7 +43,7 @@ The `:` operator allows you to easily write a lambda function with one expressio
 If you don't like the default operators, you can rename then using (rename-in):
 
     (require fluent (rename-in (~> >) (~~> >>)))
-    ("hello world" > string-upcase > string-split) ;; '("HELLO" "WORLD")
+    ("hello world" > string-split >> map string-upcase) ;; '("HELLO" "WORLD")
 
 *fluent* comes with two built in alternative syntaxes, `fluent/short` (which uses `>` and `>>` and `fluent/unicode` which uses `→` and `⇒`):
 
