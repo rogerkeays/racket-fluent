@@ -5,9 +5,9 @@
          : ~> ~~> && || iterate)
 
 ;; defining the syntax operators allows them to be renamed using (rename-in)
-(define-syntax (: stx) (raise-syntax-error #f "out of context" stx))
-(define-syntax (~> stx) (raise-syntax-error #f "out of context" stx))
-(define-syntax (~~> stx) (raise-syntax-error #f "out of context" stx))
+(define-syntax (: stx) (raise-syntax-error #f "expected param names before lambda shorthand operator" stx))
+(define-syntax (~> stx) (raise-syntax-error #f "expected single form before function composition operator" stx))
+(define-syntax (~~> stx) (raise-syntax-error #f "expected single form before function composition operator" stx))
 
 ;; match our parse cases and default to racket/base #%app
 (define-syntax-parser parse #:literals (: ~> ~~>)
@@ -26,8 +26,8 @@
   [(_ rest ...) #'(#%app rest ...)])
 
 ;; function composition doesn't work with built-in racket macros and and or, so wrap them in a procedure
-(define (&& rest ...) (and rest ...))
-(define (|| rest ...) (or rest ...))
+(define (&& a b) (and a b))
+(define (|| a b) (or a b))
 
 ;; convenience procedures
 (define (iterate list proc) (for-each proc list))

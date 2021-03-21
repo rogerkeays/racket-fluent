@@ -10,6 +10,10 @@
   (check-equal? (subtract 1 1) 0)
   (check-equal? (gt? 1 0) #t)
   (check-equal? (gte? 1 1) #t)
+  (check-equal? (&& 1 2) 2)
+  ;; (check-equal? (&& 1 2 3) 3) ;; not supported
+  (check-equal? (|| 1 2) 1)
+  ;; (check-equal? (|| 1 2 3) 1) ;; not supported
 
   ;; lambda shorthand
   (check-equal? ((e : #f) 0) #f)

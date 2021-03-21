@@ -7,16 +7,16 @@ UNIX style pipes and a lambda shorthand syntax to make your Racket code more rea
 
 Let's be honest. LISP missed a huge opportunity to change the world by telling developers they have to think backwards. Meanwhile, UNIX became successful largely because it allows you to compose programs sequentially using pipes. Compare the difference (the LISP example is Racket code):
 
-    UNIX: cat data.txt | grep "active" | uniq | sort
-    LISP: (sort (remove-duplicates ((filter (λ (line) (string-contains? line "active")) (file->lines "data.txt")))))
+    UNIX: cat data.txt | grep "active" | sort | uniq
+    LISP: (remove-duplicates (sort ((filter (λ (line) (string-contains? line "active")) (file->lines "data.txt")))))
 
 Using *fluent*, the same Racket code can be written according to the UNIX philosophy:
 
-    ("data.txt" ~> file->lines ~~> filter (line : line ~> string-contains? "active") ~> remove-duplicates ~> sort)
+    ("data.txt" ~> file->lines ~~> filter (line : line ~> string-contains? "active") ~> sort ~> remove-duplicates)
 
 If you don't like this syntax, *fluent* allows you to define your own operators or choose from some predefined alternatives. E.g:
 
-    ("data.txt" → file->lines ⇒ filter (line : line → string-contains? "active") → remove-duplicates → sort)
+    ("data.txt" → file->lines ⇒ filter (line : line → string-contains? "active") → sort → remove-duplicates)
 
 ## Function Composition
 
@@ -40,7 +40,7 @@ The : operator allows you to easily write a lambda function with one expression.
 
 ## Convenience Procedures
 
-When using function composition, procedures with text names are easier to read. For this reason, we've provided the following alternative names for the common base math procedures.
+When using function composition, procedures with text names are easier to read. For this reason, *fluent* provides the following alternative names for the common base math procedures.
 
     > gt?
     < lt?
@@ -137,6 +137,10 @@ All you need to do is `(require fluent)`. You can try it out in the REPL:
     "foo"
     > ((x y : x ~> add y) 1 2)
     3
+
+## Known Issues
+
+The function composition operator is not compatible with the `and` and `or` macros. *fluent* provides wrapper `&&` and `||` procedures which work with two arguments. 
 
 ## Related Resources
 
