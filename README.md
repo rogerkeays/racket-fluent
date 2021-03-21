@@ -146,5 +146,5 @@ The function composition operators are not compatible with the `and` and `or` ma
 
 ## Related Resources
 
-For more solutions to your life's problems, [visit the author's website](https://rogerkeays.com)
+For more solutions to your life's problems, [visit the author's website](https://rogerkeays.com).
 
