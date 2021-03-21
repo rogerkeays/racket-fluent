@@ -121,7 +121,9 @@ FLUENT (infix):
           (id3 ~> hash-ref 'track "0")
           (id3 ~> hash-ref 'artist "unknown")
           (id3 ~> hash-ref 'title "unknown")) ~> string-join ".")
- 
+
+And of course, with *fluent* you can use your own syntax.
+
 ## Installation
 
 This library is available from the Racket package collection and can be installed with raco:
