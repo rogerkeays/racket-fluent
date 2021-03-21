@@ -38,6 +38,36 @@ The : operator allows you to easily write a lambda function with one expression.
     > (map (x : string-upcase x) '("a" "b" "c"))
     '("A" "B" "C")
 
+## Flexible Syntax
+
+If you don't like the default operators, you can rename then using (rename-in):
+
+    (require fluent (rename-in (~> >) (~~> >>)))
+    ("hello world" > string-upcase > string-split) ;; '("HELLO" "WORLD")
+
+*fluent* comes with two built in alternative syntaxes, `fluent/short` (which uses `>` and `>>` and `fluent/unicode` which uses `→` and `⇒`):
+
+    (require fluent/short)
+    ("hello world" > string-split >> map string-upcase) ;; '("HELLO" "WORLD")
+
+    (require fluent/unicode)
+    ("hello world" → string-split ⇒ map string-upcase) ;; '("HELLO" "WORLD")
+
+→ is Unicode character 2192. On linux you can enter this using `shift-ctrl-u 2192 enter`. ⇒ is 21D2. Naturally, if you want to use these characters, you should map it to some unused key on your keyboard. This can be done with xmodmap:
+
+    # use xev to get the keycode
+    $ xev
+
+    # check the current mapping
+    $ xmodmap -pke
+
+    # replace the mapping
+    $ xmodmap -e "keycode 51=U2192 U21D2 ccedilla Ccedilla braceright breve braceright"
+
+This maps the cedilla key to →, and shift-cedilla to ⇒. You could use the menu key, window key, pause, insert, caps lock, or any othe useless key on your keyboard.
+
+Making this change permanent depends on your session manager. Search duckduckgo for details.
+
 ## Convenience Procedures
 
 When using function composition, procedures with text names are easier to read. For this reason, *fluent* provides the following alternative names for the common base math procedures.
@@ -56,7 +86,7 @@ Compare:
     (1 ~> + 1 ~> * 2 ~> >= 3)
     (1 ~> add 1 ~> multiply 2 ~> gte? 3)
 
-Of course, the choice is yours. Note, if you use *fluent/short* as described below, you will need to use `gt?` for the math procedure, as `>` is used for function composition.
+Of course, the choice is yours. Note, if you use *fluent/short* you will need to use `gt?` for the math procedure, as `>` is used for function composition.
 
 *fluent* also works best when the data (input) parameter comes first. Most racket functions do this out of the box, but many functions which take a procedure as a parameter put the data last. That's fine, because you can just use `~~>`. Alternatively you can wrap and rename the procedure, which is what we've done for these functions:
 
@@ -94,36 +124,6 @@ FLUENT (infix):
           (id3 ~> hash-ref 'artist "unknown")
           (id3 ~> hash-ref 'title "unknown")) ~> string-join ".")
  
-## Nice idea, but dumb syntax
-
-If you don't like the default operators, you can rename then using (rename-in):
-
-    (require fluent (rename-in (~> >) (~~> >>)))
-    ("hello world" > string-upcase > string-split) ;; '("HELLO" "WORLD")
-
-*fluent* comes with two built in alternative syntaxes, `fluent/short` (which uses `>` and `>>` and `fluent/unicode` which uses `→` and `⇒`):
-
-    (require fluent/short)
-    ("hello world" > string-split >> map string-upcase) ;; '("HELLO" "WORLD")
-
-    (require fluent/unicode)
-    ("hello world" → string-split ⇒ map string-upcase) ;; '("HELLO" "WORLD")
-
-→ is Unicode character 2192. On linux you can enter this using `shift-ctrl-u 2192 enter`. ⇒ is 21D2. Naturally, if you want to use these characters, you should map it to some unused key on your keyboard. This can be done with xmodmap:
-
-    # use xev to get the keycode
-    $ xev
-
-    # check the current mapping
-    $ xmodmap -pke
-
-    # replace the mapping
-    $ xmodmap -e "keycode 51=U2192 U21D2 ccedilla Ccedilla braceright breve braceright"
-
-This maps the cedilla key to →, and shift-cedilla to ⇒. You could use the menu key, window key, pause, insert, caps lock, or any othe useless key on your keyboard.
-
-Making this change permanent depends on your session manager. Search duckduckgo for details.
-
 ## Installation
 
 This library is available from the Racket package collection and can be installed with raco:
