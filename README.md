@@ -140,7 +140,7 @@ All you need to do is `(require fluent)`. You can try it out in the REPL:
 
 ## Known Issues
 
-The function composition operator is not compatible with the `and` and `or` macros. *fluent* provides wrapper `&&` and `||` procedures which work with two arguments. 
+The function composition operators are not compatible with the `and` and `or` macros. *fluent* provides wrapper `&&` and `||` procedures which work with two arguments. 
 
 ## Related Resources
 
