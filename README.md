@@ -14,8 +14,9 @@ Using *fluent*, the same Racket code can be written according to the UNIX philos
 
     ("data.txt" ~> file->lines ~~> filter (line : line ~> string-contains? "active") ~> sort ~> remove-duplicates)
 
-If you don't like this syntax, *fluent* allows you to define your own operators or choose from some predefined alternatives. E.g:
+As you'll see from the examples above, *fluent* adds support for function composition using `~>` and `~~>`, and lambda functions using `:`. If you don't like this syntax, *fluent* allows you to define your own operators using `(rename-in)` or choose from some predefined alternatives. E.g:
 
+    (require fluent/unicode)
     ("data.txt" → file->lines ⇒ filter (line : line → string-contains? "active") → sort → remove-duplicates)
 
 ## Function Composition
@@ -42,10 +43,10 @@ The `:` operator allows you to easily write a lambda function with one expressio
 
 If you don't like the default operators, you can rename then using (rename-in):
 
-    (require fluent (rename-in (~> >) (~~> >>)))
+    (require (rename-in fluent (~> >) (~~> >>)))
     ("hello world" > string-split >> map string-upcase) ;; '("HELLO" "WORLD")
 
-*fluent* comes with two built in alternative syntaxes, `fluent/short` (which uses `>` and `>>` and `fluent/unicode` which uses `→` and `⇒`):
+*fluent* comes with two built-in alternative syntaxes, `fluent/short` (which uses `>` and `>>`) and `fluent/unicode` (which uses `→` and `⇒`):
 
     (require fluent/short)
     ("hello world" > string-split >> map string-upcase) ;; '("HELLO" "WORLD")
