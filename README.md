@@ -87,7 +87,7 @@ Compare:
 
 Of course, the choice is yours. Note, if you use *fluent/short* you will need to use `gt?` for the math procedure, as `>` is used for function composition.
 
-*fluent* also works best with procedures which place the data (input) parameter first. Most racket functions do this out of the box, but many functions which take a procedure as a parameter put the data last. That's fine, because you can just use `~~>`. Alternatively you can wrap and rename the procedure, which is what we've done for these functions:
+*fluent* also works best with procedures which place the data parameter first. Most racket functions do this out of the box, but many functions which take a procedure as a parameter put the data last. That's fine, because you can just use `~~>`. Alternatively you can wrap and rename the procedure, which is what we've done for these functions:
 
     original   data-first version
     -----------------------------
